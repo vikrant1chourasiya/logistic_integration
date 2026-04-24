@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :sku_summary, only: [:show], param: :sku
+
   # Defines the root path route ("/")
   # root "posts#index"
 end
