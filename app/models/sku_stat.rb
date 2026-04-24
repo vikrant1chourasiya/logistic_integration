@@ -6,5 +6,5 @@ class SkuStat < ApplicationRecord
     "#(week_start.year)-W#{week_start.strftime('%V')}"
   end
 
-  scopes :for_sku, ->(sku) { where(sku: sku) }.order(week_start: :desc)
+  scope :for_sku, ->(sku) { where(sku: sku).order(week_start: :desc) }
 end
