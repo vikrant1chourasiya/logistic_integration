@@ -1,3 +1,3 @@
 class Linetime < ApplicationRecord
-  belongs_to :order_id
+  belongs_to :orders, dependent: :destroy
 end
