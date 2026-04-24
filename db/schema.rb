@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_24_101318) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_24_102506) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "linetimes", force: :cascade do |t|
     t.string "sku"
     t.integer "quanity"
-    t.boolean "original"
+    t.boolean "original", default: true
     t.bigint "orders_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,6 +28,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_24_101318) do
     t.string "external_id"
     t.datetime "placed_at"
     t.datetime "locked_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sku_stats", force: :cascade do |t|
+    t.string "sku"
+    t.string "week"
+    t.integer "total_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
