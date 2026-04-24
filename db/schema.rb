@@ -10,8 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_24_101318) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "linetimes", force: :cascade do |t|
+    t.string "sku"
+    t.integer "quanity"
+    t.boolean "original"
+    t.bigint "orders_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["orders_id"], name: "index_linetimes_on_orders_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "external_id"
+    t.datetime "placed_at"
+    t.datetime "locked_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "linetimes", "orders", column: "orders_id"
 end
