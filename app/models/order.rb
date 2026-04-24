@@ -16,4 +16,12 @@ class Order < ApplicationRecord
       RecalculateSkuStatsJob.perform_later(unique_skus)
     end
   end
+
+  def lock_permanently!
+    return if locked_at.present?
+    transaction do
+      update!(locked_at: Time.current)
+      RecalculateSkuStatsJob.perform_later(linetimes.where(original: true).pluck(:sku).uniq)
+    end
+  end
 end
