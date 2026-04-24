@@ -5,17 +5,27 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby and rails version:- 8.x(API Mode)
+* Database :- Postgresql
+* Background Processing:- ActiveJob
 
-* System dependencies
+* Clone this Repo
+* git clone [https://github.com/vikrant1chourasiya/logistic_integration.git]
+* cd logistic_integration
 
-* Configuration
+* Install Dependancies
+* Bundle Install
 
 * Database creation
+* rails db:create
+* rails db:migrate
 
-* Database initialization
+* Start Server and background job
+* rails server or rails s
+* bundle exec ActiveJob
 
 * How to run the test suite
+* Bundle exec Rspec
 
 * Services (job queues, cache servers, search engines, etc.)
 
